@@ -1,0 +1,46 @@
+:root {
+  --dark-green: #386641;
+  --mid-green: #6a994e;
+  --light-green: #9ec346;
+  --off-white: #f2e8cf;
+  --light-red: #c45a5c;
+  --mid-red: #b34244;
+  --dark-red: #963638;
+  --gold: #dbb11a;
+}
+
+header {
+  text-align: center;
+  color: var(--gold);
+  background-color: var(--dark-green);
+  border: 0.2em dashed var(--gold);
+}
+
+.advent-calendar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.day {
+  width: 20vw;
+  height: 20vh;
+
+  border: 0.2em solid black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.one {
+  background-color: var(--light-red);
+}
+
+a {
+  color: var(--off-white);
+  font-size: 2em;
+}
+a:hover {
+  color: var(--gold);
+}
