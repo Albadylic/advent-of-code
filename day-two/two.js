@@ -6,17 +6,21 @@ const twoDArr = inputData
 
 let horizontalPosition = 0;
 let depth = 0;
+let aim = 0;
 
 function checkDirection(arr) {
   switch (arr[0]) {
     case "forward":
       horizontalPosition += arr[1];
+      if (aim > 0) {
+        depth += aim * arr[1];
+      }
       break;
     case "up":
-      depth -= arr[1];
+      aim -= arr[1];
       break;
     case "down":
-      depth += arr[1];
+      aim += arr[1];
       break;
   }
 }

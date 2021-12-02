@@ -9,6 +9,64 @@
   <body>
     <h1>Day Two</h1>
 
+    <section>
+      <p>Reflections...</p>
+      <ul>
+        <li>
+          I'd forgotten the syntax for switch statements, it's similar to if and
+          for
+        </li>
+        <li>Always remember to convert strings to numbers to handle them</li>
+        <li>
+          The second map on line 5, needs to return an array with both elements,
+          not just the second one
+        </li>
+        <li>
+          The second part wasn't too tricky after the first part: adding an
+          extra variable, a check that the aim value is not zero, and increasing
+          the depth
+        </li>
+      </ul>
+    </section>
+
+    <pre>
+        <code>
+        const inputData = input.split("\n");
+
+        const twoDArr = inputData
+            .map((item) => item.split(" "))
+            .map((arr) => [arr[0], Number(arr[1])]);
+
+        let horizontalPosition = 0;
+        let depth = 0;
+        let aim = 0;
+
+        function checkDirection(arr) {
+        switch (arr[0]) {
+            case "forward":
+            horizontalPosition += arr[1];
+            if (aim > 0) {
+                depth += aim * arr[1];
+            }
+            break;
+            case "up":
+            aim -= arr[1];
+            break;
+            case "down":
+            aim += arr[1];
+            break;
+        }
+        }
+
+        twoDArr.forEach((element) => {
+        checkDirection(element);
+        });
+
+        console.log(horizontalPosition * depth);
+
+        </code>
+    </pre>
+
     <script src="input-two.js"></script>
     <script src="two.js"></script>
   </body>
