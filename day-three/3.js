@@ -72,30 +72,50 @@ function lifeSupportRating(array) {
   let charIndex = 0;
 
   // Copy array, to avoid mutating
-  let dataCopy = array;
+  let oxyCopy = array;
+  let carbonCopy = array;
 
   let mostCommon = 0;
+  let leastCommon = 0;
 
   while (charIndex < bitLength) {
-    let count = 0;
-    let dataLength = dataCopy.length;
+    let oxyCount = 0;
+    let carbonCount = 0;
+    let oxyLength = oxyCopy.length;
+    let carbonLength = carbonCopy.length;
 
-    for (let i = 0; i < dataLength; i++) {
-      count += dataCopy[i][charIndex];
+    for (let i = 0; i < oxyLength; i++) {
+      oxyCount += oxyCopy[i][charIndex];
     }
 
-    if (count >= dataLength / 2) {
+    for (let i = 0; i < carbonCopy.length; i++) {
+      carbonCount += carbonCopy[i][charIndex];
+    }
+
+    if (oxyCount >= oxyLength / 2) {
       mostCommon = 1;
     } else {
       mostCommon = 0;
     }
 
-    dataCopy = dataCopy.filter((item) => item[charIndex] === mostCommon);
+    if (carbonCount > carbonLength / 2) {
+      leastCommon = 0;
+    } else {
+      leastCommon = 1;
+    }
+
+    if (oxyCopy.length > 1) {
+      oxyCopy = oxyCopy.filter((item) => item[charIndex] === mostCommon);
+    }
+
+    if (carbonCopy.length > 1) {
+      carbonCopy = carbonCopy.filter((item) => item[charIndex] === leastCommon);
+    }
 
     charIndex++;
   }
 
-  return dataCopy[0].join("");
+  return parseInt(oxyCopy[0].join(""), 2) * parseInt(carbonCopy[0].join(""), 2);
 }
 
 console.log(lifeSupportRating(inputData));
