@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AoC: Day 4</title>
+  </head>
+  <body>
+    <h1>Day Four</h1>
+
+    <section>
+      <p>Reflections</p>
+      <ul>
+        <li>
+          Managing the data in each space on the board is not something I've
+          done before
+        </li>
+        <li>
+          Decision to make on treating each row as a string or array. It seemed
+          to me that using arrays would be easier to iterate through than
+          strings. Especailly, for counting occurences.
+        </li>
+        <li>
+          Functions are not pure, they modify array passed into them. Could this
+          be made pure by making a copy and then modifying and returning the
+          copy?
+        </li>
+        <li>My use of named vs arrow functions is fairly arbitrary.</li>
+        <li>
+          Cannot return from inside a forEach, this gave me grief when modifying
+          the rowChecker to fit in with the columnChecker. rowChecker was giving
+          a false positive when there was a full column.
+        </li>
+      </ul>
+    </section>
+  </body>
+  <script src="input-4.js"></script>
+  <script src="4.js"></script>
+</html>
