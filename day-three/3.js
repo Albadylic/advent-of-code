@@ -61,9 +61,6 @@ function calculateResult(arr) {
 // give 1 when looking for most common
 // give 0 when looking for least common
 
-let oxygenRating = [];
-let carbonRating = [];
-
 function lifeSupportRating(array) {
   // Length of one entry (num of bits)
   const bitLength = array[0].join("").length;
@@ -98,7 +95,7 @@ function lifeSupportRating(array) {
       mostCommon = 0;
     }
 
-    if (carbonCount > carbonLength / 2) {
+    if (carbonCount >= carbonLength / 2) {
       leastCommon = 0;
     } else {
       leastCommon = 1;
@@ -111,6 +108,8 @@ function lifeSupportRating(array) {
     if (carbonCopy.length > 1) {
       carbonCopy = carbonCopy.filter((item) => item[charIndex] === leastCommon);
     }
+
+    console.log({ carbonCount }, { carbonLength }, { leastCommon });
 
     charIndex++;
   }

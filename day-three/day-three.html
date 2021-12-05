@@ -33,6 +33,22 @@
           Logic for detecting the least common was confusing. Ended up with an
           answer too high, need to adjust
         </li>
+        <li>
+          The problem was checking the count against half the length. In the
+          carbon case, if the count was >= to half, then the least common should
+          be 0. For a long time, I wasn't checking for equality and this threw
+          off the final result.
+        </li>
+        <li>
+          It's quite neat having both checks in one function. However, there's a
+          lot of repeated code. I'd have liked to write more generic functions
+          which could be given 'most' or 'least' as a parameter to then output
+          the result.
+        </li>
+        <li>
+          Whole function could probably be broken down into smaller modules that
+          are run.
+        </li>
       </ul>
     </section>
 
