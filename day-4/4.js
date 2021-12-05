@@ -61,7 +61,6 @@ const checkColumn = (grid) => {
       if (grid[row][column] === "X") {
         count++;
       }
-      console.log({ row }, { column }, { count });
       row++;
     }
     if (count === 5) {
@@ -80,19 +79,28 @@ const checkColumn = (grid) => {
 // After each checkForNum, check each row and column of each grid
 // The first grid must be found, so specific grids should be iterated
 //  rather than all rows then all columns
+
+// Using grids[3 to test]
+
 checkForNum(grids, "32");
 checkForNum(grids, "38");
 checkForNum(grids, "56");
 checkForNum(grids, "64");
 checkForNum(grids, "88");
 
+// For ref, the grid is this:
 // 25  41  32  30  39
 // 06  66  38  95  05
 // 31  13  56  67  34
 // 69  18  64  44  96
 // 75  14  88  97  40
 
-// 41 66 13 18 14
-console.log(grids[3]);
-//console.log(checkRow(grids[3]));
-console.log(checkColumn(grids[3]));
+function checkGrids(array) {
+  for (let i = 0; i < array.length; i++) {
+    if (checkRow(array[i]) || checkColumn(array[i])) {
+      return "found";
+    }
+  }
+}
+
+console.log(checkGrids(grids));
