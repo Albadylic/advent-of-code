@@ -82,11 +82,11 @@ const checkColumn = (grid) => {
 
 // Using grids[3 to test]
 
-checkForNum(grids, "32");
-checkForNum(grids, "38");
-checkForNum(grids, "56");
-checkForNum(grids, "64");
-checkForNum(grids, "88");
+// checkForNum(grids, "32");
+// checkForNum(grids, "38");
+// checkForNum(grids, "56");
+// checkForNum(grids, "64");
+// // checkForNum(grids, "88");
 
 // For ref, the grid is this:
 // 25  41  32  30  39
@@ -98,9 +98,40 @@ checkForNum(grids, "88");
 function checkGrids(array) {
   for (let i = 0; i < array.length; i++) {
     if (checkRow(array[i]) || checkColumn(array[i])) {
-      return "found";
+      return i;
     }
   }
+  return false;
 }
 
-console.log(checkGrids(grids));
+//console.log(checkGrids(grids));
+
+function runCalls() {
+  let foundIndex = false;
+  let callIndex = 0;
+
+  while (foundIndex === false) {
+    checkForNum(grids, calls[callIndex]);
+    foundIndex = checkGrids(grids);
+    callIndex++;
+  }
+
+  return [foundIndex, calls[callIndex - 1]];
+}
+
+function calculateGrid([index, call]) {
+  console.log(grids[index]);
+  let sum = grids[index]
+    .map((row) =>
+      row.reduce((acc, cur) => {
+        if (cur !== "X") {
+          acc += Number(cur);
+        }
+        return acc;
+      }, 0)
+    )
+    .reduce((acc, cur) => (acc += cur));
+  return sum * Number(call);
+}
+
+console.log(calculateGrid(runCalls()));
